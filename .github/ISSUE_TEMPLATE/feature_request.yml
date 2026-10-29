@@ -1,0 +1,42 @@
+name: Feature request
+description: Suggest a command, a check or a new tool in the registry
+title: 'feat: '
+labels: [enhancement, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Adding a tool to the registry is usually a single object in `src/core/registry.js` —
+        that kind of pull request is always welcome.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you hitting?
+      description: Describe the situation, not the solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like envup to do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: This can be implemented without adding a runtime dependency
+          required: false
+        - label: I am willing to open a pull request
+          required: false

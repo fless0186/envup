@@ -1,0 +1,57 @@
+name: Bug report
+description: Something behaves differently from what the docs say
+title: 'bug: '
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. `envup check --verbose --no-color` and `envup doctor --no-color`
+        output is usually enough to reproduce the problem.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: The command you ran, what you expected, what you got.
+      placeholder: |
+        $ envup check
+        ...
+        expected: python to be detected
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      description: Output of `envup doctor --no-color` and `envup check --verbose --no-color`.
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: envup version
+      description: Output of `envup --version`.
+      placeholder: 1.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: OS and Node version
+      placeholder: Windows 11 · Node 24.4.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: manifest
+    attributes:
+      label: Relevant envup.json
+      description: Redact anything private.
+      render: json
+    validations:
+      required: false

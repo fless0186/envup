@@ -1,0 +1,6 @@
+{
+  "name": "envup",
+  "tools": {
+    "node": ">=20"
+  }
+}

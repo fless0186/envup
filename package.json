@@ -1,0 +1,56 @@
+{
+  "name": "envup",
+  "version": "1.0.0",
+  "description": "One manifest, one command: verify and install a project's development environment.",
+  "keywords": [
+    "cli",
+    "dev-environment",
+    "setup",
+    "onboarding",
+    "toolchain",
+    "bootstrap",
+    "version-check",
+    "dx"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "envup": "./bin/envup.js"
+  },
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "envup.schema.json",
+    "README.md",
+    "README.zh-CN.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "lint": "node bin/envup.js check .",
+    "demo": "node scripts/demo.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fless0186/envup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fless0186/envup/issues"
+  },
+  "homepage": "https://github.com/fless0186/envup#readme",
+  "author": "envup contributors",
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/fless0186/envup/main/envup.schema.json",
+  "title": "envup manifest",
+  "description": "Declares the tools and versions a project needs. See https://github.com/fless0186/envup",
+  "type": "object",
+  "required": ["tools"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Editor hint. Ignored by envup."
+    },
+    "name": {
+      "type": "string",
+      "description": "Project name shown by the CLI. Defaults to the directory name."
+    },
+    "tools": {
+      "type": "object",
+      "description": "Tool id to version constraint. `envup add` writes this section.",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/definitions/toolRequirement"
+      }
+    }
+  },
+  "definitions": {
+    "toolRequirement": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Version range, e.g. \">=20\", \"^3.11\" or \"any\".",
+          "examples": [">=20", "any", ">=3.11 <4", "20.x"]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "range": {
+              "type": "string",
+              "description": "Version range. Same syntax as the string form."
+            },
+            "version": {
+              "type": "string",
+              "description": "Alias for `range`, kept for readability."
+            },
+            "bin": {
+              "description": "Executable name(s) to look for on PATH. Required for tools envup does not know.",
+              "oneOf": [
+                { "type": "string" },
+                { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+              ]
+            },
+            "versionArgs": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Arguments that make the tool print its version. Default: [\"--version\"]."
+            },
+            "versionPattern": {
+              "type": "string",
+              "description": "Regular expression with the version in capture group 1. Default: \"(\\\\d+\\\\.\\\\d+(?:\\\\.\\\\d+)?)\"."
+            }
+          }
+        }
+      ]
+    }
+  }
+}
